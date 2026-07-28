@@ -1,0 +1,39 @@
+{
+  "folders": [
+    {
+      "name": "SocialMediaReact",
+      "path": ".",
+    },
+    {
+      "name": "JS-HMTL",
+      "path": "../JS-HMTLKnowledegeBase",
+    },
+    {
+      "name": "Linux",
+      "path": "../Linux-Knowledgebase",
+    },
+    {
+      "name": "GenAI",
+      "path": "../GenAI_KnowledgeBase",
+    },
+    {
+      "name": "React",
+      "path": "../React-KnowledgeBase",
+    },
+  ],
+  "settings": {
+    "terminal.integrated.profiles.linux": {
+      "WSL Node.js": {
+        "path": "/bin/bash",
+        "args": ["--rcfile", "${workspaceFolder:SocialMediaReact}/.vscode/wsl-node-bashrc", "-i"],
+        "icon": "terminal-linux",
+        "overrideName": true,
+      },
+    },
+    "terminal.integrated.defaultProfile.linux": "WSL Node.js",
+    "terminal.integrated.cwd": "${workspaceFolder:SocialMediaReact}",
+    "remote.autoForwardPorts": true,
+    "remote.restoreForwardedPorts": true,
+    "workbench.editor.labelFormat": "medium",
+  },
+}
