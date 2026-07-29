@@ -47,8 +47,8 @@ dist-ssr
 /playwright/.auth/
 
 # Firebase
-/.firebase/
-
+src/config/firebase.ts
+**/.firebase
 
 # React
 /dist
