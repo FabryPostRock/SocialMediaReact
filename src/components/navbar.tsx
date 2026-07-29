@@ -15,8 +15,10 @@ export const Navbar = () => {
   return (
     <div className="navbar">
       {/* Link di navigazione */}
-      <Link to="/">Home</Link>
-      <Link to="/login">Login</Link>
+      <div className="links">
+        <Link to="/"> Home</Link>
+        <Link to="/login"> Login</Link>
+      </div>
       <div className="user">
         {/* Mostra i dati solamente quando user esiste */}
         {/* <> : è un React Fragment.

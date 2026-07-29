@@ -20,6 +20,7 @@ body {
 .navbar .links {
   text-align: center;
   margin-right: 50px;
+  color: white;
 }
 
 .links a {
