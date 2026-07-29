@@ -16,8 +16,9 @@ export const Navbar = () => {
     <div className="navbar">
       {/* Link di navigazione */}
       <div className="links">
-        <Link to="/"> Home</Link>
-        <Link to="/login"> Login</Link>
+        <Link to="/"> Home </Link>
+        {!user ? <Link to="/login"> Login </Link> : <Link to="/createpost"> Create Post </Link>}
+        <Link to="/login"> Login </Link>
       </div>
       <div className="user">
         {/* Mostra i dati solamente quando user esiste */}
