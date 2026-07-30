@@ -4,6 +4,8 @@ Firestore è NoSQL, i dati sono definiti tramite una collection che contiene div
 
 La prima cosa da fare è creare lo schema Firestore della collection che nell'esempio è chiamata 'post' da React.
 
+Lo si fa direttamente da browser nell'interfaccia di firestore inserendo un primo documento bozza che poi si può cancellare ma in questo modo si è creata una nuova collection.
+
 # Abilitare la scrittura su Firestore
 
 Quando viene creato il db la Rule/Permission di default è :
