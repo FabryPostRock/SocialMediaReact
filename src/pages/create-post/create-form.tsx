@@ -1,6 +1,15 @@
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../../config/firebase';
+/*
+una collection è la collection chiamata 'post' che abbiamo creato su firestore
+a cui è associato un document con un identificativo.
+Ad ogni azione sulla collection 'post' si aggiunge di fatto un documento.
+*/
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../../config/firebase';
 
 interface CreateFormData {
   title: string;
@@ -8,6 +17,7 @@ interface CreateFormData {
 }
 
 export const CreateForm = () => {
+  const [user] = useAuthState(auth);
   const schema = yup.object().shape({
     title: yup.string().required('You must add a title.'),
     description: yup.string().required('You must add a description.'),
@@ -20,8 +30,15 @@ export const CreateForm = () => {
     resolver: yupResolver(schema),
   });
 
-  const onCreatePost = (data: CreateFormData) => {
-    console.log(data);
+  const postRef = collection(db, 'post');
+
+  const onCreatePost = async (data: CreateFormData) => {
+    await addDoc(postRef, {
+      title: data.title,
+      desciption: data.description,
+      username: user?.displayName,
+      userId: user?.uid,
+    });
   };
   return (
     <form onSubmit={handleSubmit(onCreatePost)}>
