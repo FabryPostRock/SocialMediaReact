@@ -41,15 +41,38 @@ export const CreateForm = () => {
     } as CreateFormData);
   };
   return (
-    <form onSubmit={handleSubmit(onCreatePost)}>
+    <form className="create-post-form" onSubmit={handleSubmit(onCreatePost)}>
       {/*
         In JSX, ogni elemento deve essere chiuso. Per gli elementi vuoti si usa '/>'
      */}
-      <input placeholder="Title..." {...register('title')} />
-      <p style={{ color: 'red' }}>{errors.title?.message}</p>
-      <textarea placeholder="Description..." {...register('description')} />
-      <p style={{ color: 'red' }}>{errors.description?.message}</p>
-      <input type="submit" />
+      <div className="mb-3">
+        <label className="form-label" htmlFor="post-title">
+          Give an attractive Title
+        </label>
+
+        <input
+          id="post-title"
+          className={`form-control ${errors.title ? 'is-invalid' : ''}`}
+          placeholder="Title..."
+          {...register('title')}
+        />
+        <p className="field-error">{errors.title?.message}</p>
+      </div>
+      <div className="mb-3">
+        <p style={{ color: 'red' }}>{errors.title?.message}</p>
+        <textarea
+          className={`form-control ${errors.description ? 'is-invalid' : ''}`}
+          placeholder="Description..."
+          {...register('description')}
+        />
+        <p className="field-error" style={{ color: 'red' }}>
+          {errors.description?.message}
+        </p>
+      </div>
+      <button className="btn btn-app-light w-100 fw-semibold" type="submit">
+        {' '}
+        Create{' '}
+      </button>
     </form>
   );
 };

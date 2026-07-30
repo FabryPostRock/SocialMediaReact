@@ -7,6 +7,9 @@ import { db } from '../../config/firebase';
 import { useEffect, useState } from 'react';
 import { Post } from './post';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../App.css';
+
 export interface Post {
   id: string;
   userId: string;
@@ -31,8 +34,18 @@ export const Main = () => {
     getPosts();
   }, []);
   return (
-    <div>
-      {/*
+    <main className="container app-page">
+      <h1 className="app-page-title text-center">Post recenti</h1>
+
+      {postsList === null ? (
+        <div className="text-center py-5">
+          <div className="spinner-border" role="status" aria-label="Caricamento dei post" />
+        </div>
+      ) : postsList.length === 0 ? (
+        <div className="app-empty-state">Non è ancora stato pubblicato nessun post.</div>
+      ) : (
+        <div className="posts-grid">
+          {/*
       Questa scrittura è una arrow function con return implicito: 
       (post) => (
         <Post post={post} />
@@ -42,15 +55,17 @@ export const Main = () => {
         return <Post post={post} />;
       }
       */}
-      {postsList?.map((post) => (
-        /*
-          <Post post={post} /> : Crea un’istanza del componente React Post e gli passa una prop chiamata post, 
-          il cui valore è la variabile post corrente del map().
-          Il post corrente quindi viene passato come prop.
-          Aggiungere sempre la proprietà 'key' per mappare correttamente oggetti iterabili 
-        */
-        <Post key={post.id} post={post} />
-      ))}
-    </div>
+          {postsList.map((post) => (
+            /*
+            <Post post={post} /> : Crea un’istanza del componente React Post e gli passa una prop chiamata post, 
+            il cui valore è la variabile post corrente del map().
+            Il post corrente quindi viene passato come prop.
+            Aggiungere sempre la proprietà 'key' per mappare correttamente oggetti iterabili 
+          */
+            <Post key={post.id} post={post} />
+          ))}
+        </div>
+      )}
+    </main>
   );
 };

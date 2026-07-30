@@ -68,23 +68,32 @@ export const Post = (props: Props) => {
   }, []);
 
   return (
-    <div>
-      <div className="title">
-        <h1> {post.title}</h1>
+    <article className="card post-card">
+      <header className="card-header p-3">
+        <h2 className="card-title">{post.title}</h2>
+      </header>
+
+      <div className="card-body">
+        <p className="card-text">{post.description}</p>
       </div>
-      <div className="body">
-        <p> {post.description}</p>
-      </div>
-      <div className="footer">
-        <p> {post.username}</p>
-        {/*<>&#128078;</> : il fragment è aggiunto per distinguere la parte js da quella html*/}
-        <button onClick={hasUserLiked ? removeLike : addLike}>
-          {' '}
-          {hasUserLiked ? <>&#128078;</> : <>&#128077;</>}{' '}
-        </button>
-        {/*likeAmount && : Visuliazzo 'Likes:' solo se c'è almeno un like*/}
-        {likes && <p> Likes: {likes?.length}</p>}
-      </div>
-    </div>
+
+      <footer className="card-footer p-3">
+        <p className="post-author">{post.username}</p>
+
+        <div className="post-like-group">
+          <button
+            className="btn btn-app-primary post-like-button"
+            type="button"
+            onClick={hasUserLiked ? removeLike : addLike}
+            aria-label={hasUserLiked ? 'Rimuovi like' : 'Aggiungi like'}
+          >
+            {/*<>&#128078;</> : il fragment è aggiunto per distinguere la parte js da quella html*/}
+            {hasUserLiked ? <>&#128078;</> : <>&#128077;</>}
+          </button>
+          {/*likes && : Visuliazzo 'Likes:' solo se c'è almeno un like*/}
+          {likes && <p className="post-like-count">Likes: {likes.length}</p>}
+        </div>
+      </footer>
+    </article>
   );
 };

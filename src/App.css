@@ -1,86 +1,318 @@
-.App {
-  text-align: center;
+/* App.css
+   Stili personalizzati pensati per lavorare insieme a Bootstrap 5.
+   Importare prima Bootstrap e poi questo file.
+*/
+
+:root {
+  --app-primary: slateblue;
+  --app-primary-rgb: 106, 90, 205;
+  --app-form-bg: rgba(43, 0, 255, 0.588);
+  --app-control-bg: rgba(222, 239, 248, 0.877);
+  --app-control-text: rgb(97, 4, 184);
+  --app-surface: #ffffff;
+  --app-page-bg: #f5f6fa;
+  --app-border: rgba(106, 90, 205, 0.22);
+  --app-shadow: 0 0.75rem 2rem rgba(40, 29, 105, 0.12);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--app-page-bg);
+  color: #212529;
 }
 
-.navbar {
-  width: 100%;
-  height: 80px;
-  background-color: slateblue;
+.App {
+  min-height: 100vh;
+}
+
+/* Navbar */
+.app-navbar {
+  min-height: 80px;
+  background-color: var(--app-primary);
+}
+
+.app-navbar .navbar-brand,
+.app-navbar .nav-link {
+  color: #ffffff;
+}
+
+.app-navbar .nav-link {
+  position: relative;
+  margin-inline: 0.35rem;
+  padding-inline: 0.25rem;
+  font-weight: 600;
+}
+
+.app-navbar .nav-link::after {
+  position: absolute;
+  right: 0.25rem;
+  bottom: 0.2rem;
+  left: 0.25rem;
+  height: 3px;
+  content: "";
+  background-color: #ffffff;
+  border-radius: 999px;
+  opacity: 0;
+  transform: scaleX(0);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.app-navbar .nav-link:hover,
+.app-navbar .nav-link:focus-visible {
+  color: #ffffff;
+}
+
+.app-navbar .nav-link:hover::after,
+.app-navbar .nav-link:focus-visible::after,
+.app-navbar .nav-link.active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.app-user {
   display: flex;
+  gap: 0.65rem;
   align-items: center;
-  justify-content: flex-end;
+  color: #ffffff;
 }
 
-.navbar .links {
-  text-align: center;
-  margin-right: 50px;
+.app-user-name {
+  margin: 0;
+  font-size: 0.9375rem;
 }
 
-.links a {
-  color: white;
-  text-decoration: none;
-  border-bottom: 3px solid white;
-  padding-bottom: 2px;
-  margin: 10px;
-}
-
-.navbar .user {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 50px;
-}
-
-.user p {
-  font-size: 15px;
-  margin-right: 10px;
-  color: white;
-}
-.user img {
-  font-size: 15px;
+.app-user-avatar {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.8);
   border-radius: 50%;
 }
 
-input,
-textarea {
-  font-family: 'Nunito', sans-serif;
+/* Pulsanti */
+.btn-app-primary {
+  --bs-btn-color: #ffffff;
+  --bs-btn-bg: var(--app-primary);
+  --bs-btn-border-color: var(--app-primary);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: rgb(88, 73, 178);
+  --bs-btn-hover-border-color: rgb(88, 73, 178);
+  --bs-btn-focus-shadow-rgb: var(--app-primary-rgb);
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: rgb(75, 61, 158);
+  --bs-btn-active-border-color: rgb(75, 61, 158);
 }
 
-.create-post {
-  width: 100%;
-  height: auto;
+.btn-app-light {
+  --bs-btn-color: var(--app-control-text);
+  --bs-btn-bg: var(--app-control-bg);
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-color: var(--app-control-text);
+  --bs-btn-hover-bg: rgba(208, 228, 240, 0.98);
+  --bs-btn-hover-border-color: rgba(var(--app-primary-rgb), 0.35);
+  --bs-btn-focus-shadow-rgb: var(--app-primary-rgb);
+}
+
+/* Pagine e contenitori */
+.app-page {
+  padding-block: 2.5rem;
+}
+
+.app-page-title {
+  margin-bottom: 1.5rem;
+  color: var(--app-control-text);
+  font-weight: 700;
+}
+
+.app-empty-state {
+  padding: 3rem 1.25rem;
+  color: #6c757d;
+  text-align: center;
+  background-color: var(--app-surface);
+  border: 1px dashed var(--app-border);
+  border-radius: 0.75rem;
+}
+
+/* Form creazione post */
+.create-post-page {
   display: flex;
   justify-content: center;
 }
-form {
-  margin-top: 50px;
-  padding: 30px 20px;
-  width: 320px;
-  border-radius: 7px;
-  background-color: white;
-  backdrop-filter: blur(5px);
-  background-color: rgba(43, 0, 255, 0.588);
+
+.create-post-form {
+  width: 100%;
+  max-width: 420px;
+  padding: 1.75rem;
   overflow: hidden;
+  background-color: var(--app-form-bg);
+  border: 0;
+  border-radius: 0.75rem;
+  box-shadow: var(--app-shadow);
+  backdrop-filter: blur(5px);
 }
 
-input,
-textarea {
-  padding: 8px 10px;
-  margin: 3px 8px 16px 8px;
-  background-color: rgba(222, 239, 248, 0.877);
-  border: 0px transparent;
-  border-radius: 5px;
-  color: rgb(97, 4, 184);
-  font-size: 16px;
-  z-index: 1;
+.create-post-form .form-label {
+  color: #ffffff;
+  font-weight: 600;
 }
 
-.submitForm:hover {
-  cursor: pointer;
+.create-post-form .form-control {
+  padding: 0.65rem 0.8rem;
+  font-family: "Nunito", Arial, Helvetica, sans-serif;
+  color: var(--app-control-text);
+  background-color: var(--app-control-bg);
+  border: 1px solid transparent;
+  border-radius: 0.4rem;
+}
+
+.create-post-form textarea.form-control {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.create-post-form .form-control:focus {
+  color: var(--app-control-text);
+  background-color: var(--app-control-bg);
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.22);
+}
+
+.create-post-form .field-error {
+  min-height: 1.25rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* Feed e card */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 1.25rem;
+}
+
+.post-card {
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 1.25rem rgba(40, 29, 105, 0.08);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.post-card:hover {
+  box-shadow: var(--app-shadow);
+  transform: translateY(-3px);
+}
+
+.post-card .card-header {
+  color: #ffffff;
+  background-color: var(--app-primary);
+  border-bottom: 0;
+}
+
+.post-card .card-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.post-card .card-text {
+  color: #495057;
+  white-space: pre-wrap;
+}
+
+.post-card .card-footer {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(222, 239, 248, 0.42);
+  border-top: 1px solid var(--app-border);
+}
+
+.post-author {
+  margin: 0;
+  color: var(--app-control-text);
+  font-size: 0.925rem;
+  font-weight: 700;
+}
+
+.post-like-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.post-like-button {
+  min-width: 44px;
+  line-height: 1;
+}
+
+.post-like-count {
+  margin: 0;
+  color: var(--app-control-text);
+  font-weight: 700;
+}
+
+/* Login */
+.login-page {
+  display: grid;
+  min-height: calc(100vh - 80px);
+  padding-block: 2.5rem;
+  place-items: center;
+}
+
+.login-card {
+  width: min(100%, 420px);
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: 0.75rem;
+  box-shadow: var(--app-shadow);
+}
+
+.login-card h1,
+.login-card h2 {
+  color: var(--app-control-text);
+}
+
+@media (max-width: 767.98px) {
+  .app-navbar {
+    min-height: auto;
+  }
+
+  .app-navbar .navbar-collapse {
+    padding-top: 1rem;
+  }
+
+  .app-navbar .nav-link {
+    margin-inline: 0;
+    padding-block: 0.65rem;
+  }
+
+  .app-user {
+    padding-block: 0.75rem;
+  }
+
+  .app-page {
+    padding-block: 1.5rem;
+  }
+
+  .create-post-form,
+  .login-card {
+    padding: 1.25rem;
+  }
 }
