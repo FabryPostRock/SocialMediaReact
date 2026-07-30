@@ -35,10 +35,10 @@ export const CreateForm = () => {
   const onCreatePost = async (data: CreateFormData) => {
     await addDoc(postRef, {
       title: data.title,
-      desciption: data.description,
+      description: data.description,
       username: user?.displayName,
       userId: user?.uid,
-    });
+    } as CreateFormData);
   };
   return (
     <form onSubmit={handleSubmit(onCreatePost)}>

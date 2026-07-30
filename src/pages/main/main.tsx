@@ -44,7 +44,7 @@ export const Main = () => {
       */}
       {postsList?.map((post) => (
         /*
-          <Post post={post} /> : Crea un’istanza del componente React Post e passagli una prop chiamata post, 
+          <Post post={post} /> : Crea un’istanza del componente React Post e gli passa una prop chiamata post, 
           il cui valore è la variabile post corrente del map().
           Il post corrente quindi viene passato come prop.
           Aggiungere sempre la proprietà 'key' per mappare correttamente oggetti iterabili 
