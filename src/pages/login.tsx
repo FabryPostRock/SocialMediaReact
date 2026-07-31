@@ -11,9 +11,16 @@ export const Login = () => {
   };
 
   return (
-    <div>
-      <p> Sign in with Goole To Continue</p>
-      <button onClick={signInWithGoogle}> Sign in With Google</button>
-    </div>
+    <main className="container login-page">
+      <section className="login-card">
+        <h1 className="h3 mb-3">Accedi</h1>
+
+        <p className="text-secondary mb-4">Accedi con Google per continuare.</p>
+
+        <button className="btn btn-app-primary w-100" type="button" onClick={signInWithGoogle}>
+          Sign in with Google
+        </button>
+      </section>
+    </main>
   );
 };
